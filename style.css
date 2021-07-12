@@ -77,14 +77,14 @@ h1 {
 .inputFormBox {
   background: linear-gradient(#94AED6, #5285D8);
   -webkit-animation-name: fade-in1;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.0s;
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-delay: 0s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-direction: normal;
   -webkit-animation-fill-mode: forwards;
   animation-name: fade-in1;
-  animation-duration: 1.5s;
+  animation-duration: 1.0s;
   animation-timing-function: ease-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
@@ -160,11 +160,19 @@ div.download {
  @-webkit-keyframes fade-in1 {
     0% {
       opacity: 0.1;
-      transform: translateX(5px)
+      transform: translateX(500px)
+    }
+    90% {
+      opacity: 0.9;
+      transform: translateX(-100px)
+    }
+    98% {
+      opacity: 0.95;
+      transform: translateX(20px)
     }
     100% {
       opacity: 1;
-      transform: translateX(-5px)
+      transform: translateX(0px)
     }
     /* 100% {
       opacity: 0.2;
