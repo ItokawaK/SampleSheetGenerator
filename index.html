@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sample Sheet generator for Illumina</title>
+  <style type="text/css"></style>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>SAMPLE SHEET GENERATOR for ILLUMINA</h1>
+
+  <div>
+    <p style="text-align:center;">Version: 1.16</p>
+
+    <div style="margin:1em 0 0 0;">
+      <div id="Icon">
+        <img src="animal_character_hakui_m_kuma.png" style="width:140px;"></img>
+        <p style="color:gray;font-size:5px;"> ©いらすとや </p>
+      </div>
+      <div id="HowToUse">
+        <ul>
+          <li>必要があればRun Name を変更して下さい。例 Run-2021-07-09</li>
+          <li>Library kit を選んでください。感染研の新型コロナゲノム解析プロトコルは
+            <span style="font-weight:bold">[TruSeqHT / QiaSeqFX CD]</span> を使います。</li>
+          <li>Sample Sheet type を選んでください。iSeq のLRMなら
+            <span style="font-weight:bold">[iSeq LocalRunManager]</span> です。</li>
+          <li>Previously used SampleSheets
+           に過去に使用したサンプルシートファイルを指定すると、<br>
+           既に使われたサンプルIDが無いかチェックできます。 </li>
+          <li>下に入力ボックスが現れたら、エクセル等から直接コピー＆ペーストでサンプルIDの表を入力して下さい。<br>
+          その際、必ず A01 のウェルを起点にコピーするようにして下さい。</li>
+          <li>Download リンクをクリックしてサンプルシートを保存してください。</li>
+        </ul>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="configArea">
+      Run Name: <input id="runName" type="text" class="options1">
+
+      <form id="selectKit">
+        <p>Library kit:
+          <select id="kitSelect" class="options2" required>
+            <option value="" class="options">Select your kit</option>
+          </select> <span id="selectKitMsg"></span>
+        </p>
+      </form>
+
+      <!-- <form id="selectFormat">
+        <p>Select base-calling program:
+          <input type="radio" name="baseCaller" value="bcl2fastq" checked/>bcl2fastq
+          <input type="radio" name="baseCaller" value="Dragen" />Dragen (FileFormatV2)
+          <input type="radio" name="baseCaller" value="iSeq" />iSeq LocalRunManager
+        </p>
+      </form> -->
+
+      <form id="selectFormat">
+        <p>Sample Sheet type:
+          <select name="baseCaller" class="options3">
+            <option class="options3" value="bcl2fastq"> bcl2fastq</option>
+            <option class="options3" value="Dragen">Dragen (FileFormatV2)</option>
+            <option class="options3" value="iSeq">iSeq LocalRunManager</option>
+          <select>
+        </p>
+      </form>
+
+      <form id="selectFile">
+        <p style="color:#6E6E6E">SampleSheets previously used (Optional):
+          <input type="file" id="files" name="files[]" multiple />
+        </p>
+      </form>
+    </div>
+
+  </div>
+
+  <form id="inputForm"></form>
+
+  <hr size=5 noshade>
+  <!-- <input type="button" value="Generate SampleSheet" onclick="formating('input', 'output', 'DL')" /> -->
+  <div>
+    <div>
+      <form name="outputForm" class="outputImageBox">
+        <textarea id="output" class="outputTextarea" name="outputTbl" readonly></textarea>
+      </form>
+      <div>
+        <p>
+          Read1 cycles: <input id="read1CycleNumber" type="number"/>
+          <br>
+          Read2 cycles: <input id="read2CycleNumber" type="number"/>
+        </p>
+
+        <form id="I5Revcomp">
+          <p>Revcomp i5 index from default:
+            <input type="radio" name="i5_revcomp" value="false" checked/>No
+            <input type="radio" name="i5_revcomp" value="true" />Yes
+          </p>
+        </form>
+        <form id="indexExtention">
+          <p>Extend/Shorten index:
+            -2<input type="radio" name="indexExt" value=-2 />
+            -1<input type="radio" name="indexExt" value=-1 />
+            <input type="radio" name="indexExt" value=0 checked/>
+            <input type="radio" name="indexExt" value=1 />+1
+            <input type="radio" name="indexExt" value=2 />+2
+          </p>
+        </form>
+
+
+        <!-- <p>Log messages:
+          <form name="LogOutputForm">
+            <textarea id="logoutput" rows="20" cols="100" readonly></textarea>
+          </form>
+        </P> -->
+      </div>
+    </div>
+  </div>
+  <div class="download">
+    <p><a id="DL">Download</a></p>
+  </div>
+
+  <p>Log messages:
+    <form name="LogOutputForm">
+      <textarea id="logoutput" rows="20" cols="100" readonly></textarea>
+    </form>
+  </P>
+
+  <script type="text/javascript" src="config.js"></script>
+  <script type="text/javascript" src="kit_data/truSeqHT.js"></script>
+  <script type="text/javascript" src="kit_data/qiagenUDI.js"></script>
+  <script type="text/javascript" src="kit_data/NexteraXTv2.js"></script>
+  <script type="text/javascript" src="kit_data/IDT4ILM_Tru.js"></script>
+  <script type="text/javascript" src="kit_data/IDT4ILM_Nex.js"></script>
+
+  <!-- <script type="text/javascript" src="load_used_ids.js"></script> -->
+  <script type="text/javascript" src="load_used_ids_local.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
+
+</body>
+
+</html>
