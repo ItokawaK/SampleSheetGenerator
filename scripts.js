@@ -10,8 +10,8 @@ const Log_OUTPUT_FORM = document.getElementById('logoutput');
 const DL_LINK = document.getElementById('DL');
 const READ_CYCLE_BOXES = [document.getElementById('read1CycleNumber'), document.getElementById('read2CycleNumber')];
 // const INDEX_CYCLE_BOXES = [document.getElementById('index1CycleNumber'), document.getElementById('index2CycleNumber')];
-const INPUT_PLACEHOLDER = "Copy & paste sampleID table directly from Excel spreadsheet. " +
-                          "Plese always include the A01 cell regardless " +
+const INPUT_PLACEHOLDER = "Copy & paste sampleID table here directly from Excel spreadsheet. " +
+                          "Plese always start copying from A01 cell regardless " +
                           "of whether there is a value or not.";
 
 const CELL_COLOR_EMPTY = "white";
@@ -27,8 +27,28 @@ const SAMPLE_ID_CELL_CLASS = "sampleTableCellId";
 const INPUT_FORMBOX_CLASS = "inputFormBox";
 const INDEX_PLATENAME_CLASS = "indexPlateName";
 
+const LANGUAGE_OP=document.getElementById('selectLang');
+const EXPLANATION_CLASSES=document.getElementsByClassName('Explanation');
+
 const DOWNLOAD_FILE = 'SampleSheet.csv';
 const DELIMITTER = /\t|,\s*/;
+
+LANGUAGE_OP.addEventListener("change",
+                      (event)=>{
+                        let all = EXPLANATION_CLASSES;
+                        for (var i = 0; i < all.length; i++) {
+                          all[i].style.display = "none";
+                        };
+
+                        if (document.getElementById('lang-Jp').checked){
+                          document.getElementById('ExplanationJp')
+                             .style.display = "inline";
+                        } else {
+                          document.getElementById('ExplanationEng')
+                              .style.display = 'inline';
+                        }
+                      }
+                    );
 
 SLECT_KIT_MSG.innerHTML = SELECT_YOUR_KIT_MSG;
 

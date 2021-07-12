@@ -20,18 +20,35 @@
         <p style="color:gray;font-size:5px;"> ©いらすとや </p>
       </div>
       <div id="HowToUse">
-        <ul>
-          <li>必要があればRun Name を変更して下さい。例 Run-2021-07-09</li>
-          <li>Library kit を選んでください。</li>
-          <li>Sample Sheet type を選んでください。iSeq のLRMなら
-            <span style="font-weight:bold">[iSeq LocalRunManager]</span> です。</li>
-          <li>Previously used SampleSheets
-           に過去に使用したサンプルシートファイルを指定すると、<br>
-           既に使われたサンプルIDが無いかチェックできます。 </li>
-          <li>下に入力ボックスが現れたら、エクセル等から直接コピー＆ペーストでサンプルIDの表を入力して下さい。<br>
-          その際、必ず A01 のウェルを起点にコピーするようにして下さい。</li>
-          <li>Download リンクをクリックしてサンプルシートを保存してください。</li>
-        </ul>
+        <div id="selectLang" class="langOP" >
+          日本語<input type="radio" id="lang-Jp" name='langage'>
+          <input type="radio" id="lang-En" name='langage' checked="checked">English
+        </div>
+        <div class="Explanation" id="ExplanationJp" style="display:none;">
+          <ul>
+            <li>必要があればRun Name を変更して下さい。例 Run-2021-07-09</li>
+            <li>Library kit を選んでください。</li>
+            <li>Sample Sheet type を選んでください。iSeq のLRMなら
+              <span style="font-weight:bold">[iSeq LocalRunManager]</span> です。</li>
+            <li>Previously used SampleSheets
+             に過去に使用したサンプルシートファイルを指定すると、<br>
+             既に使われたサンプルIDが無いかチェックできます。 </li>
+            <li>下に入力ボックスが現れたら、エクセル等から直接コピー＆ペーストでサンプルIDの表を入力して下さい。<br>
+            その際、必ず A01 のウェルを起点にコピーするようにして下さい。</li>
+            <li>Download リンクをクリックしてサンプルシートを保存してください。</li>
+          </ul>
+        </div>
+        <div class="Explanation" id="ExplanationEng">
+          <ul>
+            <li>Change Run Name if nesessary. e.g Run-2021-07-09</li>
+            <li>Select Library kit.</li>
+            <li>Select Sample Sheet type. e.g.
+              <span style="font-weight:bold">[iSeq LocalRunManager]</span> for LRM in iSeq100.</li>
+            <li>You can check whether IDs are previously used or not by loading ols SampleSheets.</li>
+            <li>Just copy & past sample IDs from Excel spreadsheet arranged as plate position to the textbox apperered below.</li>
+            <li>Click Download botton to save SampleSheet CSV.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -137,8 +154,9 @@
   <script type="text/javascript" src="load_used_ids_local.js"></script>
   <script type="text/javascript" src="scripts.js"></script>
 
-  <div style="margin-left: 20%;margin-right: 20%">
-    <p style='color:gray;font-size:10pt;text-align:center'>
+  <div style="margin-left:20%;margin-right:20%;text-align:center">
+    <p><a href="https://github.com/ItokawaK/SampleSheetGenerator">GitHub repository</a></p>
+    <p style='color:gray;font-size:10pt;'>
         THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
       IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
       FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
