@@ -27,8 +27,11 @@ const SAMPLE_ID_CELL_CLASS = "sampleTableCellId";
 const INPUT_FORMBOX_CLASS = "inputFormBox";
 const INDEX_PLATENAME_CLASS = "indexPlateName";
 
-const LANGUAGE_OP=document.getElementById('selectLang');
-const EXPLANATION_CLASSES=document.getElementsByClassName('Explanation');
+const LANGUAGE_OP = document.getElementById('selectLang');
+const EXPLANATION_CLASSES = document.getElementsByClassName('Explanation');
+const ALLOW_UNDESCORE_CBX = document.getElementById('allowUnderScore');
+
+var format_atleast_once = false;
 
 const DOWNLOAD_FILE = 'SampleSheet.csv';
 const DELIMITTER = /\t|,\s*/;
@@ -85,6 +88,9 @@ READ_CYCLE_BOXES[0].addEventListener("change",
                             );
 READ_CYCLE_BOXES[1].addEventListener("change",
                        (event)=>{if (OUTPUT_FORM.value) {formating()}}
+                            );
+ALLOW_UNDESCORE_CBX.addEventListener("change",
+                       (event)=>{if (format_atleast_once) {formating()}}
                             );
 // INDEX_CYCLE_BOXES[0].addEventListener("change",
 //                        (event)=>{if (OUTPUT_FORM.value) {formating()}}
@@ -209,6 +215,7 @@ function generateInbox(){
 }
 
 function formating(){
+  format_atleast_once = true;
   if(Object.keys(USED_IDS).length == 0){
     let err_msg = 'Warning: No previous run data was loaded.\n';
     window.confirm(err_msg);
@@ -237,6 +244,7 @@ function formating(){
   let trimTarget1 = indexSet.trimTarget1;
   let trimTarget2 = indexSet.trimTarget2;
   let make_i5_revcomp = REVCOMP_I5.i5_revcomp.value;
+  let allowUnderScore = ALLOW_UNDESCORE_CBX.checked;
 
   let outLines = [];  // an array to store sample sheet lines
   let usedSampleId = []  // an array to store used sample IDs
@@ -335,7 +343,7 @@ function formating(){
           }
           tblCell.innerHTML = sampleIdShort;
 
-          let idSanity = checkIDString(sampleId);
+          let idSanity = checkIDString(sampleId, allowUnderScore);
           if (!idSanity['length']){
             let err_msg = `Error: ${sampleId} has too many characters.\n`;
             window.alert(err_msg);

@@ -109,9 +109,13 @@ function generateHeader(version, runName, readLength1, readLength2,
   }
 };
 
-function checkIDString(idString){
+function checkIDString(idString, allowUnderScore=false){
   let output = {};
-  let regex = new RegExp(/^[a-zA-Z0-9-]+$/);
+  if (allowUnderScore) {
+    var regex = new RegExp(/^[a-zA-Z0-9-_]+$/);
+  }else{
+    var regex = new RegExp(/^[a-zA-Z0-9-]+$/);
+  }
   if(idString.length <=100){
     output['length'] = true;
   } else {
