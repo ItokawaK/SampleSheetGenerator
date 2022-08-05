@@ -21,7 +21,7 @@ const BASE_CALLER_CONFIG = {
   }
 }
 
-const BCLConvert_VERSION = "3.7.4";
+// const BCLConvert_VERSION = "3.7.4";
 
 function generateHeader(version, runName, readLength1, readLength2,
                         indexLength1, indexLength2, trimTarget1, trimTarget2,
@@ -65,7 +65,7 @@ function generateHeader(version, runName, readLength1, readLength2,
           "Index2Cycles," +  indexLength2,
           "",
           "[BCLConvert_Settings]",
-          "SoftwareVersion," + BCLConvert_VERSION,
+          "SoftwareVersion," + BCLConvert_VERSION.value,
           "AdapterRead1," + trimTarget1,
           "AdapterRead2," + trimTarget2,
           "BarcodeMismatchesIndex1,0",

@@ -36,6 +36,9 @@ var format_atleast_once = false;
 const DOWNLOAD_FILE = 'SampleSheet.csv';
 const DELIMITTER = /\t|,\s*/;
 
+// const BCLConvert_VERSION = "3.7.4";
+const BCLConvert_VERSION = document.getElementById('DragenVersion');
+
 LANGUAGE_OP.addEventListener("change",
                       (event)=>{
                         let all = EXPLANATION_CLASSES;
@@ -75,8 +78,14 @@ KIT_SELECTOR.addEventListener("change",generateInbox);
 // KIT_SELECTOR.addEventListener("change",OnButtonClick2);
 
 SHEET_FORMAT.addEventListener("change",
-                       (event)=>{if (OUTPUT_FORM.value) {formating()}}
-                            );
+                       (event)=>{
+                         if (SHEET_FORMAT.baseCaller.value == 'Dragen'){
+                            document.getElementById('DragenVersionSelecter').style.visibility = 'visible'
+                         } else {
+                           document.getElementById('DragenVersionSelecter').style.visibility = 'hidden'
+                         };
+                         if (OUTPUT_FORM.value) {formating();}
+                      });
 INDEX_EXTENTION.addEventListener("change",
                        (event)=>{if (OUTPUT_FORM.value) {formating()}}
                             );
@@ -91,6 +100,9 @@ READ_CYCLE_BOXES[1].addEventListener("change",
                             );
 ALLOW_UNDESCORE_CBX.addEventListener("change",
                        (event)=>{if (format_atleast_once) {formating()}}
+                            );
+BCLConvert_VERSION.addEventListener("change",
+                       (event)=>{if (OUTPUT_FORM.value) {formating()}}
                             );
 // INDEX_CYCLE_BOXES[0].addEventListener("change",
 //                        (event)=>{if (OUTPUT_FORM.value) {formating()}}
@@ -237,8 +249,8 @@ function formating(){
   let readLength2 = READ_CYCLE_BOXES[1].value;
   let indexLength1 = indexSet.indexLength;
   let indexLength2 = indexSet.indexLength;
-  indexLength1 += indexExt
-  indexLength2 += indexExt
+  indexLength1 += indexExt;
+  indexLength2 += indexExt;
   let adapterExt1 = indexSet.adapterExtra1
   let adapterExt2 = indexSet.adapterExtra2
   let trimTarget1 = indexSet.trimTarget1;
