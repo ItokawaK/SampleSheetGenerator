@@ -228,11 +228,11 @@ function generateInbox(){
 
 function formating(){
   format_atleast_once = true;
-  if(Object.keys(USED_IDS).length == 0){
-    let err_msg = 'Warning: No previous run data was loaded.\n';
-    window.confirm(err_msg);
-    Log_OUTPUT_FORM.value += err_msg;
-  }
+  // if(Object.keys(USED_IDS).length == 0){
+  //   let err_msg = 'Warning: No previous run data was loaded.\n';
+  //   window.confirm(err_msg);
+  //   Log_OUTPUT_FORM.value += err_msg;
+  // }
 
   Log_OUTPUT_FORM.value += '\n---------Start Formatting------------\n\n'
 
