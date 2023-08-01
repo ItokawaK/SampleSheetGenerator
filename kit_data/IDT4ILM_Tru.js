@@ -1,5 +1,5 @@
 INDEX_DATA['IDT4ILMN_Tru'] = {
-    "kitName": "IDT-ILMN TruSeq DNA-RNA UD Indexes 96 Indexes",
+    "kitName": "IDT-ILMN TruSeq DNA-RNA UD Indexes 96 Indexes (Depricated in 2023)",
     "indexSetNames":['Index 1-96'],
     "defaultReadLength": 151,
     "indexLength": 8,
